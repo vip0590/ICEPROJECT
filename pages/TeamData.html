@@ -1,0 +1,94 @@
+
+<div class="containerTeam">
+	<div class="responsive" style="padding:10px;background-image: url(./images/banner2.jpg);">
+		<table>
+			<tr>
+				<td width="35%">
+					<img ng-src="{{img}}" class="team" alt="{{teamName}} " style="width:40%">
+				</td>
+				<td width="65%">  </td>
+			</tr>
+		</table>	
+	</div>
+	
+	<nav class="test navbar navbar-default ">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNav">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+				</button>
+				<span class="navbar-brand">Overview</span>
+			</div>
+			<div class="collapse navbar-collapse navbar-right" id="myNav">
+				<ul class="nav navbar-nav ">
+<!--					<li><a href="#team/{{id}}" data-target="#">Overview</a></li>-->
+					<li><a href="#players/{{id}}" data-target="#">Squad</a></li>
+					<li><a href="#teamResult/{{id}}" data-target="#">Results</a></li>
+					<li><a href="#teamFixture/{{id}}" data-target="#">Fixtures</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown">
+							Head 2 Head
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li ng-repeat="x in serviceData | orderBy: 'name'"><a  ng-if="x.name!=teamName" href="#head2head/{{x._links.self.href.split('/').pop().trim()}}" data-target="#">{{x.name}}</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<br>
+	<div  style="padding-left:15px;padding-right:15px"  ng-repeat="x in fixture | orderBy:['date']:true  | filter:checkLast5 track by $index">
+		<div ng-if="$index<1">
+			<b>Last Game Results:</b><br><br>
+			<b>{{x.date | date:'dd MMMM yyyy'}}	</b><hr style="margin-top:0px">		
+			<table  class="text-center table-responsive" >
+				<tr>
+					<td style="width:33%">{{x.homeTeamName}}	
+						<span ng-if="x.homeTeamName===teamData.name">
+							<img class="imgg" ng-src="{{teamData.crestUrl}}" style="width:20%">
+						</span>
+						<span ng-if="x.homeTeamName!=teamData.name" ng-repeat="i in serviceData | filterBy: ['name']: x.homeTeamName track by $index ">
+							<p ng-if="i.crestUrl==''">something</p>
+							<img ng-src="{{i.crestUrl}}" alt="No img" style="width:20%">
+						</span>
+					</td>
+					<td style="width:33%">
+						<span class="score">
+							{{x.result.goalsHomeTeam}} - {{x.result.goalsAwayTeam}}
+						</span>
+					</td>
+					<td style="width:33%">
+						<span ng-if="x.awayTeamName===teamData.name">
+							<img ng-src="{{teamData.crestUrl}}" style="width:30%">
+						</span>	
+						<span ng-if="x.awayTeamName!=teamData.name" ng-repeat="i in serviceData | filterBy: ['name']: x.awayTeamName track by $index ">
+							<img ng-src="{{i.crestUrl}}" alt="No img" style="width:20%">
+						</span>
+						{{x.awayTeamName}} 
+					</td>			
+				</tr>
+			</table>
+			<br><br><hr style="margin-top:0px">
+			<div>
+				<b>Last 5 Games Performance:</b><br><br>
+				<span  ng-repeat="a in fixture | orderBy:['date']:true  | filter:checkLast5 track by $index" ng-if="$index<5" >
+					<span ng-if="a.homeTeamName===teamName">
+						<span ng-if="a.result.goalsHomeTeam > a.result.goalsAwayTeam" class="win"><span >W </span></span>
+						<span ng-if="a.result.goalsHomeTeam < a.result.goalsAwayTeam" class="loss"><span >L</span></span>	
+						<span ng-if="a.result.goalsHomeTeam === a.result.goalsAwayTeam" class="draw"><span >D</span></span>	
+					</span>
+					<span ng-if="a.awayTeamName===teamName">
+						<span ng-if="a.result.goalsAwayTeam > a.result.goalsHomeTeam" class="win"><span >W</span></span>
+						<span ng-if="a.result.goalsAwayTeam < a.result.goalsHomeTeam" class="loss"><span>L</span></span>	
+						<span ng-if="a.result.goalsAwayTeam === a.result.goalsHomeTeam" class="draw"><span>D</span></span>
+					</span>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>

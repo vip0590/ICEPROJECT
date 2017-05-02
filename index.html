@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+	<head>
+
+		<title>Internet Client Engineering</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="css/style.css" type="text/css">
+		<link rel="stylesheet" href="css/player.css" type="text/css">  
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.16/angular-filter.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css' type='text/css' media='all' />
+ <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js'></script>
+		<script src="app.js"></script>  
+		<script type="text/javascript">
+			$(window).on('load',(function() {
+				// Animate loader off screen
+				$(".se-pre-con").fadeOut("slow");;
+			}));
+		</script>
+		<script src="js/index.js"></script>
+
+
+	</head>
+	<body ng-controller="defaultController" id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+<!--		<div class="se-pre-con"></div>-->
+		
+		<nav class="test navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>                        
+					</button>
+					<a class="navbar-brand" href="#">Premier League</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">HOME</a></li>
+						<li><a href="#table">LEAGUE TABLE</a></li>
+						<li><a href="#results">RESULTS</a></li>
+						<!--<li><a href="#fixtures">FIXTURES</a></li>-->
+
+						<!--
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
+<span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li><a href="#">Merchandise</a></li>
+<li><a href="#">Extras</a></li>
+<li><a href="#">Media</a></li> 
+</ul>
+</li>
+<li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>-->
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- Container  -->
+		
+		<div ng-view></div>
+<div class="text-center" id="loading-bar-container"></div><br>
+		<footer class="text-center">
+			<!--<a class="up-arrow" href="#" data-toggle="tooltip" title="TO TOP">
+<span class="glyphicon glyphicon-chevron-up"></span>
+</a><br><br>
+<button class="btn" type="button">Top</button>
+</footer>
+<script type="text/javascript">
+$("button").click(function() {
+$('html,body').animate({
+scrollTop: $(".test").offset().top},'slow');
+});
+
+
+
+</script>-->
+			</body>
+		</html>

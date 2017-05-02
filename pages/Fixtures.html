@@ -1,0 +1,12 @@
+<div class="container">
+	<ul>
+		<li  ng-repeat="(key, value) in fixture | groupBy: 'date' |filterBy: ['status']: 'SCHEDULED' track by $index  ">
+			{{ key | date:'dd MMMM yyyy'}}
+			<ul>
+				<li ng-repeat="x in value ">
+					{{x.homeTeamName}}  {{x.result.goalsHomeTeam}}-{{x.result.goalsAwayTeam}}  {{x.awayTeamName}} 
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>

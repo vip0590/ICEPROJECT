@@ -1,0 +1,89 @@
+<div class="containerTeam">
+	<div class="responsive" style="padding:10px;background-image: url(./images/banner2.jpg);">
+		<table><tr><td width="35%"><a href="#team/{{currentTeamID}}" data-target="#"><img ng-src="{{teamData.crestUrl}}" class="team" alt="{{teamData.name}}" style="width:40%"></a>  </td>
+			<td width="65%">   </td>
+			</tr></table>	
+	</div>
+
+
+
+	<!--
+<header class="clubHero clubColorBg">
+<div class="wrapper">
+<div class="col-12">
+<div class="clubDetailsContainer">
+<div class="badgeContainer">
+<picture>
+<img ng-src="{{teamData.crestUrl}}" class="team" alt="{{teamData.name}}" width="80%" height="80%" >  
+</picture>
+</div>
+<div class="clubDetails">
+<h1 class="team1">{{teamData.name}}</h1>             
+</div>
+</div>
+</div>
+</div>	</header>	
+-->
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+
+			</div>
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNav">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+				</button>
+				<span class="navbar-brand">Head to Head</span>
+			</div>
+			<div class="collapse navbar-collapse navbar-right" id="myNav">
+				<ul class="nav navbar-nav">
+					<li><a href="#team/{{currentTeamID}}" data-target="#">Team Home</a></li>
+					<li><a href="#players/{{currentTeamID}}" data-target="#">Squad</a></li>
+					<li><a href="#teamResult/{{currentTeamID}}" data-target="#">Results</a></li>
+					<li><a href="#teamFixture/{{currentTeamID}}" data-target="#">Fixtures</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown">Head 2 Head
+							<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li ng-repeat="x in serviceData | orderBy: 'name'"><a ng-if="x.name!=teamData.name" href="#head2head/{{x._links.self.href.split('/').pop().trim()}}" data-target="#">{{x.name}}</a></li>
+						</ul>
+					</li>
+				</ul></div>
+		</div>
+	</nav>
+
+
+	<h3>{{teamData.name}} vs {{rivalteamName}}</h3>
+
+	<div style="padding-left:15px;padding-right:15px"  ng-repeat="x in fixture | orderBy:['date']:true  | filterBy: ['homeTeamName','awayTeamName']: rivalteamName track by $index " >
+		<b>{{x.date | date:'dd MMMM yyyy'}}	</b>		
+		<table class="table table-condensed table-responsive" >
+			<tr>
+				<td width="20%">{{x.homeTeamName}}</td>
+				<td ng-if="x.homeTeamName===teamData.name">
+					<img ng-src="{{teamData.crestUrl}}" width="30px" height="30px">
+				</td>
+				<td ng-if="x.homeTeamName!=teamData.name" ng-repeat="i in serviceData | filterBy: ['name']: x.homeTeamName track by $index "><p ng-if="i.crestUrl==''">something</p>
+					<img ng-src="{{i.crestUrl}}" alt="No img" width="30px" height="30px">
+				</td>	
+				<td width="10%">{{x.result.goalsHomeTeam}}</td>
+				<td width="10%">{{x.result.goalsAwayTeam}}</td>
+				<td ng-if="x.awayTeamName===teamData.name">
+					<img ng-src="{{teamData.crestUrl}}" width="30px" height="30px">
+				</td>	
+				<td ng-if="x.awayTeamName!=teamData.name" ng-repeat="i in serviceData | filterBy: ['name']: x.awayTeamName track by $index ">
+					<img ng-src="{{i.crestUrl}}" alt="No img" width="30px" height="30px">
+				</td>
+				<td width="20%">{{x.awayTeamName}} </td>	
+				<td width="40%"></td>
+
+			</tr>
+			<tr><td colspan="7"></td></tr>
+
+		</table>
+
+	</div>	
+
+</div>
