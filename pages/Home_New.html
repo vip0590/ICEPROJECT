@@ -9,7 +9,7 @@
 	<!-- Wrapper for slides -->
 	<div class="carousel-inner" role="listbox">
 		<div class="item active">
-			<img src="images/football4.jpg" alt="New York" width="1200" height="700">
+			<img src="images/5.jpg" alt="New York" width="1200" height="700">
 
 			<div class="carousel-caption">
 				<button class="btn" type="button">Click to Get Started</button>
@@ -26,17 +26,11 @@
 		</div>
 
 		<div class="item">
-			<img src="images/field1.jpg" alt="Chicago" width="1200" height="700">
-			<!--
-<div class="carousel-caption">
-<h3>Chicago</h3>
-<p>Thank you, Chicago - A night we won't forget.</p>
-</div>      
--->
+			<img src="images/3.jpg" alt="Chicago" width="1200" height="700">
 		</div>
 
 		<div class="item">
-			<img src="images/f5.jpg" alt="Los Angeles" width="1200" height="700">
+			<img src="images/4.jpg" alt="Los Angeles" width="1200" height="700">
 			<!--
 <div class="carousel-caption">
 <h3>LA</h3>
@@ -72,7 +66,7 @@ No of Teams: {{x.numberOfTeams}}
 			<br>		
 
 			<div class="teamInfo">
-				<a class="indexItem " title="{{x.name}}" ng-href="#team/{{x._links.self.href.split('/').pop().trim()}}">  
+				<a style="text-decoration: none;" class="indexItem " title="{{x.name}}" ng-href="#team/{{x._links.self.href.split('/').pop().trim()}}">  
 					<img ng-src="{{ x.crestUrl }}" class="team" alt="Random Name" width="80" height="80">
 				</a>
 				<br>{{x.name}}

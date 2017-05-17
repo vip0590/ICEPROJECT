@@ -1,7 +1,7 @@
 <div class="containerTeam">
-	<div class="responsive" style="padding:10px;background-image: url(./images/banner2.jpg);">
+	<div class="responsive" style="padding:10px;background-image: url(./images/banner3.jpg);">
 		<table><tr><td width="35%"><a href="#team/{{id}}" data-target="#"><img ng-src="{{teamData.crestUrl}}" class="team" alt="{{teamData.name}}" style="width:40%"> </a> </td>
-			<td width="65%">  </td>
+			<td width="65%"><H1 style="color:white">{{teamData.name}} </H1>  </td>
 			</tr></table>	
 	</div>
 	<!--
@@ -56,7 +56,7 @@
 	<br>
 
 	<div style="padding-left:15px;padding-right:15px"  ng-repeat="x in fixture | filter:stat" >
-		<b>{{x.date | date:'dd MMMM yyyy'}}	</b>		
+		<b>{{x.date.substr(0,x.date.length-1) | date:'dd MMMM yyyy'}}	</b>		
 		<table class="table table-condensed table-responsive" >
 			<tr>
 				<td width="20%">{{x.homeTeamName}}</td>

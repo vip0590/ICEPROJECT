@@ -1,50 +1,41 @@
-
-<br><br>
-
-<header class="clubHero clubColorBg">
-	<div class="wrapper">
-		<div class="col-12">
-			<div class="clubDetailsContainer">
-				<div class="clubDetails">
-					<h2 class="team1">Results</h2>             
+<div class="containerTeam">
+	<header class="clubHero clubColorBg">
+		<div class="wrapper">
+			<div class="col-12">
+				<div class="clubDetailsContainer">
+					<div class="clubDetails">
+						<h2 class="team1">Results</h2>             
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>	
-</header>	
+		</div>	
+	</header>	
 
-<div class="container">
+
 	<div class="col-12">
-<ul style="list-style: none;">
-		<li ng-repeat="(key, value) in results | filterBy: ['status']: 'FINISHED' | groupBy: 'date'  ">
-			{{ key | date:'dd MMMM yyyy'}}
-			<ul  style="list-style: none;" >
-				<li ng-repeat="x in value ">
-					{{x.homeTeamName}}  {{x.result.goalsHomeTeam}}-{{x.result.goalsAwayTeam}}  {{x.awayTeamName}} 
-				</li>
-			</ul>
-		</li>
-	</ul>
-		
-		
-
-<!--
-		<div  ng-repeat="x in results | orderBy: 'date':true | filterBy: ['status']: 'FINISHED' track by $index " >
-			<b>{{x.date | date:'dd MMMM yyyy'}}	</b><br>		
-			<table class="table table-condensed table-responsive" >
-				<tr>
-					<td width="20%">{{x.homeTeamName}}</td>
-					<td width="10%">{{x.result.goalsHomeTeam}}</td>
-					<td width="10%">{{x.result.goalsAwayTeam}}</td>
-					<td width="20%">{{x.awayTeamName}} </td>	
-					<td width="40%"></td>
-
-				</tr>
-
-			</table>
-
-		</div>		
--->
-
+		<ul style="list-style: none;">
+			<li ng-repeat="key in answer | filterBy: ['status']: 'FINISHED' | groupBy: 'date' | toArray:true  ">
+				<b>{{key.$key.substr(0,key.$key.length-1) | date:'dd MMMM yyyy hh:mm a'}}</b>
+				<ul  style="list-style: none;" >
+					<li >
+						<table  class="text-center table-responsive" >
+							<tr ng-repeat="x in key  ">
+								<td>{{x.homeTeamName}}	
+								</td>
+								<td >
+									<span class="score">
+										{{x.result.goalsHomeTeam}} - {{x.result.goalsAwayTeam}}
+									</span>
+								</td>
+								<td >
+									{{x.awayTeamName}} 
+								</td>			
+							</tr>
+						</table>
+					</li>
+				</ul>
+			</li>
+		</ul>
 	</div>
 </div>
+
